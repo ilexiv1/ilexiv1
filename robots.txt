@@ -1,0 +1,7 @@
+# robots.txt for https://ilexiv.ir/
+# ilexiv
+
+User-agent: *
+Allow: /
+
+Sitemap: https://ilexiv.ir/sitemap.xml

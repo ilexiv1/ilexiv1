@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ilexiv</title>
+    <link>https://ilexiv.ir/</link>
+    <description>Developer • Gamer • Tech Enthusiast</description>
+    <language>en-us</language>
+    <copyright>© 2026 ilexiv</copyright>
+    <lastBuildDate>Wed, 25 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://ilexiv.ir/rss.xml" rel="self" type="application/rss+xml"/>
+  </channel>
+</rss>
