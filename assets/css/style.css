@@ -143,6 +143,9 @@ a{
     color:var(--muted);
     letter-spacing:.02em;
     padding-right:43px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
 
 .term-body{
@@ -210,9 +213,10 @@ a{
     color:var(--text);
     flex:1;
     min-width:0;
+    unicode-bidi:plaintext; /* auto-detects RTL for Persian titles, no flag needed */
 }
 
-.entry-tags{
+.entry-tags,.entry-meta{
     color:var(--amber-dim);
     flex-shrink:0;
     font-size:.8rem;
@@ -220,7 +224,24 @@ a{
 }
 
 @media (min-width:560px){
-    .entry-tags{display:block;}
+    .entry-tags,.entry-meta{display:block;}
+}
+
+/* tags archive page */
+.tag-group{margin-bottom:26px;}
+
+.tag-heading{
+    font-size:1rem;
+    font-weight:700;
+    color:var(--amber);
+    margin:0 0 10px;
+    scroll-margin-top:20px;
+}
+
+.tag-count{
+    color:var(--dim);
+    font-weight:400;
+    font-size:.82rem;
 }
 
 .empty{
@@ -237,6 +258,12 @@ a{
 
 .post-meta .tag{
     color:var(--amber-dim);
+    text-decoration:none;
+}
+
+.post-meta .tag:hover{
+    color:var(--amber);
+    text-decoration:underline;
 }
 
 article.post h1.post-title{
@@ -245,6 +272,94 @@ article.post h1.post-title{
     letter-spacing:-.5px;
     margin:6px 0 4px;
     line-height:1.25;
+    unicode-bidi:plaintext;
+}
+
+/* prev/next post navigation */
+.post-nav{
+    display:flex;
+    gap:16px;
+    margin-top:36px;
+    border-top:1px solid var(--border);
+    padding-top:20px;
+}
+
+.post-nav-link{
+    flex:1;
+    min-width:0;
+    text-decoration:none;
+    padding:14px 16px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    transition:background .15s ease, border-color .15s ease;
+}
+
+.post-nav-link:hover{
+    background:rgba(255,180,84,.06);
+    border-color:rgba(255,180,84,.3);
+}
+
+.post-nav-link.next{
+    text-align:right;
+    margin-left:auto;
+}
+
+.post-nav-label{
+    display:block;
+    color:var(--amber-dim);
+    font-size:.75rem;
+    margin-bottom:4px;
+}
+
+.post-nav-title{
+    display:block;
+    color:var(--text);
+    font-size:.85rem;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    unicode-bidi:plaintext;
+}
+
+/* ---------------------------------------------------------- */
+/* RTL support (Persian posts): set `rtl: true` in front matter */
+/* ---------------------------------------------------------- */
+
+article.post[dir="rtl"]{
+    font-family:'Vazirmatn', 'JetBrains Mono', sans-serif;
+}
+
+.prose.rtl{
+    font-family:'Vazirmatn', sans-serif;
+    line-height:2;
+}
+
+/* code always stays LTR and monospace, even inside RTL articles */
+.prose.rtl pre,
+.prose.rtl code{
+    direction:ltr;
+    unicode-bidi:isolate;
+    text-align:left;
+    font-family:'JetBrains Mono', monospace;
+}
+
+/* mirror list indent and blockquote rule to the correct side */
+.prose.rtl ul,
+.prose.rtl ol{
+    margin:0 1.3em 20px 0;
+}
+
+.prose.rtl blockquote{
+    border-left:none;
+    border-right:2px solid var(--amber-dim);
+    padding:2px 16px 2px 0;
+}
+
+/* the "## " prefix is a nod to markdown syntax in Latin script —
+   skipped for Persian headings so it doesn't sit awkwardly against RTL text */
+.prose.rtl h2::before,
+.prose.rtl h3::before{
+    content:"";
 }
 
 .prose{

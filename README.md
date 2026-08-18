@@ -25,8 +25,37 @@ Write in normal markdown here.
 ```
 
 It'll be published at `ilexiv.ir/blog/your-slug/`. Push it — GitHub Pages
-rebuilds automatically. Delete `_posts/2026-08-18-hello-world.md` whenever
-you're ready.
+rebuilds automatically. Delete `_posts/2026-08-18-hello-world.md` and
+`_posts/2026-08-18-rtl-support.md` whenever you're ready — they're just demos.
+
+## Writing in Persian (RTL)
+
+Add `rtl: true` to a post's front matter and it renders right-to-left with a
+Persian typeface (Vazirmatn):
+
+```markdown
+---
+title: "عنوان فارسی"
+date: 2026-08-19
+tags: [dev]
+rtl: true
+lang: fa
+---
+
+متن نوشته اینجا.
+```
+
+Code blocks inside an RTL post automatically stay left-to-right and
+monospace — code shouldn't mirror even in a Persian post. You can mix English
+and Persian posts freely in the same `_posts/` folder; each one is
+independent. Post titles in the home listing auto-detect direction even
+without the flag, so a Persian title in the list still displays correctly.
+
+## Tags
+
+Every post's `tags:` front matter is clickable — it links to `/blog/tags/`,
+which lists every tag with the posts under it. No extra setup needed, it's
+built from whatever tags your posts already have.
 
 ## Run it locally (optional)
 

@@ -1,23 +1,46 @@
 ---
 layout: default
 ---
-<div class="ln"><a class="breadcrumb" href="{{ '/' | relative_url }}"><span class="prompt">ilexiv@web</span><span class="path">:~/blog$</span> <span class="cmd">cd ..</span></a></div>
+{% assign words = content | strip_html | number_of_words %}
+{% assign read_mins = words | divided_by: 200 | at_least: 1 %}
+
+<div class="ln"><a class="breadcrumb" href="{{ '/blog/' | relative_url }}"><span class="prompt">ilexiv@web</span><span class="path">:~/blog$</span> <span class="cmd">cd ..</span></a></div>
 <div class="ln"><span class="prompt">ilexiv@web</span><span class="path">:~/blog$</span> <span class="cmd">cat {{ page.slug }}.md</span></div>
 
-<article class="post">
+<article class="post"{% if page.rtl %} dir="rtl" lang="{{ page.lang | default: 'fa' }}"{% endif %}>
     <h1 class="post-title">{{ page.title }}</h1>
     <div class="post-meta">
         {{ page.date | date: "%B %-d, %Y" }}
+        &nbsp;&middot;&nbsp;{{ read_mins }} min read
         {% if page.tags.size > 0 %}
             &nbsp;&middot;&nbsp;
-            {% for tag in page.tags %}<span class="tag">#{{ tag }}</span>{% unless forloop.last %} {% endunless %}{% endfor %}
+            {% for tag in page.tags %}<a class="tag" href="{{ '/blog/tags/' | relative_url }}#{{ tag | slugify }}">#{{ tag }}</a>{% unless forloop.last %} {% endunless %}{% endfor %}
         {% endif %}
     </div>
 
-    <div class="prose">
+    <div class="prose{% if page.rtl %} rtl{% endif %}">
         {{ content }}
     </div>
 </article>
+
+{% if page.previous or page.next %}
+<div class="post-nav">
+    {% if page.previous %}
+    <a class="post-nav-link prev" href="{{ page.previous.url | relative_url }}">
+        <span class="post-nav-label">&larr; prev</span>
+        <span class="post-nav-title">{{ page.previous.title }}</span>
+    </a>
+    {% else %}
+    <span></span>
+    {% endif %}
+    {% if page.next %}
+    <a class="post-nav-link next" href="{{ page.next.url | relative_url }}">
+        <span class="post-nav-label">next &rarr;</span>
+        <span class="post-nav-title">{{ page.next.title }}</span>
+    </a>
+    {% endif %}
+</div>
+{% endif %}
 
 <div class="cursor-line">
     <span style="color:var(--dim);">// EOF</span>

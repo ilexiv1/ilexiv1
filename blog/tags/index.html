@@ -1,0 +1,33 @@
+---
+layout: default
+title: Tags
+permalink: /blog/tags/
+---
+<div class="ln"><a class="breadcrumb" href="{{ '/blog/' | relative_url }}"><span class="prompt">ilexiv@web</span><span class="path">:~/blog$</span> <span class="cmd">cd ..</span></a></div>
+<div class="ln"><span class="prompt">ilexiv@web</span><span class="path">:~/blog$</span> <span class="cmd">ls tags/</span></div>
+
+{% assign tag_names = site.tags | sort %}
+{% if tag_names.size > 0 %}
+{% for tag in tag_names %}
+{% assign tag_name = tag[0] %}
+{% assign tag_posts = tag[1] %}
+<div class="tag-group">
+    <h2 id="{{ tag_name | slugify }}" class="tag-heading">#{{ tag_name }} <span class="tag-count">{{ tag_posts.size }}</span></h2>
+    <div class="listing">
+        {% for post in tag_posts %}
+        <a class="entry" href="{{ post.url | relative_url }}">
+            <span class="entry-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+            <span class="entry-title">{{ post.title }}</span>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endfor %}
+{% else %}
+<div class="empty">// no tags yet</div>
+{% endif %}
+
+<div class="cursor-line">
+    <span><span class="prompt">ilexiv@web</span><span class="path">:~/blog/tags$</span></span>
+    <span class="cursor" aria-hidden="true"></span>
+</div>

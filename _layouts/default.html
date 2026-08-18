@@ -13,7 +13,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/syntax.css' | relative_url }}">
@@ -33,7 +33,7 @@
                 <span class="dot y"></span>
                 <span class="dot g"></span>
             </div>
-            <div class="term-title">ilexiv@web&nbsp;&mdash;&nbsp;~/blog</div>
+            <div class="term-title">ilexiv@web&nbsp;&mdash;&nbsp;{% if page.layout == 'post' %}~/blog/{{ page.slug }}{% elsif page.url == '/blog/tags/' %}~/blog/tags{% else %}~/blog{% endif %}</div>
         </div>
 
         <div class="term-body">
