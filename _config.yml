@@ -1,0 +1,40 @@
+title: ilexiv
+description: "Developer · Gamer · Tech Enthusiast — notes and posts"
+url: "https://ilexiv.ir"
+author: ilexiv
+
+# Blog lives under /blog on the same domain as the landing page.
+baseurl: ""
+home_url: "/"
+
+markdown: kramdown
+highlighter: rouge
+permalink: /blog/:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  # jekyll-sitemap is intentionally left out — you already have a hand-written
+  # sitemap.xml for the landing page at the repo root, and the plugin would
+  # try to generate its own at the same path.
+
+# Served at /blog/rss.xml so it never collides with the existing /rss.xml
+# used by the landing page.
+feed:
+  path: blog/rss.xml
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

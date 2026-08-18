@@ -1,0 +1,13 @@
+/* Rouge syntax theme — tuned to the amber terminal palette */
+.highlight .c, .highlight .c1, .highlight .cm { color: #6f7480; font-style: italic; } /* comment */
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kr { color: #ffb454; }      /* keyword */
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .se { color: #a3d9a5; }      /* string */
+.highlight .n, .highlight .nx { color: #e9e6df; }                                      /* name */
+.highlight .nf, .highlight .nb { color: #8fd3ff; }                                     /* function/builtin */
+.highlight .nc { color: #8fd3ff; }                                                     /* class */
+.highlight .m, .highlight .mi, .highlight .mf { color: #ffb454; }                      /* number */
+.highlight .o { color: #ff9d5c; }                                                      /* operator */
+.highlight .p { color: #9aa0ab; }                                                      /* punctuation */
+.highlight .err { color: #ff5f57; }
+.highlight .gd { color: #ff5f57; }  /* diff deleted */
+.highlight .gi { color: #a3d9a5; }  /* diff inserted */

@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<div class="ln"><span class="prompt">ilexiv@web</span><span class="path">:~/blog$</span> <span class="cmd">whoami</span></div>
+<div class="ln" style="font-size:1.15rem;font-weight:800;margin:2px 0 4px;">{{ site.title }}</div>
+<div class="ln" style="color:var(--muted);margin-bottom:20px;">{{ site.description }}</div>
+
+<div class="ln"><span class="prompt">ilexiv@web</span><span class="path">:~/blog$</span> <span class="cmd">ls -la posts/</span></div>
+
+{% if site.posts.size > 0 %}
+<div class="listing">
+    {% for post in site.posts %}
+    <a class="entry" href="{{ post.url | relative_url }}">
+        <span class="entry-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+        <span class="entry-title">{{ post.title }}</span>
+        <span class="entry-tags">{% for tag in post.tags %}--{{ tag }} {% endfor %}</span>
+    </a>
+    {% endfor %}
+</div>
+{% else %}
+<div class="empty">// no posts yet — drop a markdown file in _posts/</div>
+{% endif %}
+
+<div class="cursor-line">
+    <span><span class="prompt">ilexiv@web</span><span class="path">:~/blog$</span></span>
+    <span class="cursor" aria-hidden="true"></span>
+</div>
